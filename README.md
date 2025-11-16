@@ -53,7 +53,7 @@ graph TD
 
 ## 📁 Project StructureA tree view of the main repositories/folders..
 
-```mermaid
+```
 ├── api/          # Backend FastAPI service
 ├── ui/           # Frontend Flask/HTMX service
 ├── db/           # EdgeDB Docker configuration
