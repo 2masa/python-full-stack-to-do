@@ -1,4 +1,5 @@
 from pathlib import Path
+from app.cli.service import run_command
 from pydantic import Field
 from rich.console import Console
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -31,6 +32,9 @@ env_path = Path("envs/cli.env")
 
 if not env_path.exists():
     console.print("[bold cyan]Missing envs/cli.env file. Run: `cli env create` first.[/bold cyan]")
+    if not run_command(["uv", "run", "cli", "env", "create"], "Failed to create .env files"):
+        console.print("[bold red]Env file creation failed. Please check the error above.[/bold red]")
+    console.print("[green]✓ Environment files created.[/green]")
 
 else:
     settings =  Settings()

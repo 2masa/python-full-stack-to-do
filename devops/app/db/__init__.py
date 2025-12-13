@@ -2,14 +2,13 @@
 from edgedb import create_client,Client
 
 
-from app.config import Settings, settings
 
 
 def get_sync_client() -> Client:
     """
     Creates and returns a SYNCHRONOUS client for use in CLI scripts.
     """
-    settings =  Settings()
+    from app.config import settings 
     client: Client | None = None
     try:
         client = create_client(
